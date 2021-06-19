@@ -2264,6 +2264,13 @@ class LRGeneratedTable(LRTable):
                 self.lr0_cidhash[id(g)] = len(C)
                 C.append(g)
 
+        I_Dict = {}
+        for i, c_i in enumerate(C):
+            I_Dict[f'I{i}'] = [str(s) for s in c_i]
+
+        with open('lr_states.json', 'w+', encoding='UTF8') as wf:
+            json.dump(I_Dict, wf, indent=2)
+
         return C
 
     # -----------------------------------------------------------------------------
